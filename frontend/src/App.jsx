@@ -1532,12 +1532,15 @@ function App() {
     setError("");
 
     try {
+          const API_URL =
+  import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+
       const response = await axios.post(
-        "http://127.0.0.1:8000/analyze",
-        {
-          github_url: githubUrl.trim(),
-        }
-      );
+  `${API_URL}/analyze`,
+  {
+    github_url: githubUrl.trim(),
+  }
+);
 
       setData(response.data);
       setPage("summary");
