@@ -26,6 +26,7 @@ app.add_middleware(
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "https://repo-lens-mauve.vercel.app",
+        "https://repo-lens-aonb71e9x-prasanna-rvssl.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
