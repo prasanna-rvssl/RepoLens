@@ -8,7 +8,7 @@ Simply paste a public GitHub repository URL and RepoLens analyzes the codebase t
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 
 **Live Application:**  
 https://repo-lens-aonb71e9x-prasanna-rvssl.vercel.app
@@ -21,7 +21,7 @@ https://repolens-backend-b8dt.onrender.com
 
 ---
 
-## 📌 Problem
+## Problem
 
 Understanding an unfamiliar GitHub repository can take a significant amount of time.
 
@@ -39,7 +39,7 @@ This process can become especially difficult when working with large or unfamili
 
 ---
 
-## 💡 Solution
+## Solution
 
 RepoLens automatically analyzes a public GitHub repository and presents the results through a clean and interactive dashboard.
 
@@ -59,7 +59,7 @@ RepoLens helps reduce the time and effort required to understand unfamiliar code
 
 ---
 
-# ✨ Features
+# Features
 
 ## 1. Repository Analysis
 
@@ -79,7 +79,7 @@ The analysis includes:
 
 ---
 
-## 2. 🤖 AI-Powered Project Summary
+## 2. AI-Powered Project Summary
 
 RepoLens can generate an easy-to-understand summary of the analyzed repository.
 
@@ -95,7 +95,7 @@ The goal is to make technical repositories easier to understand, especially for 
 
 ---
 
-## 3. 🗺️ RepoMap
+## 3. RepoMap
 
 RepoLens generates an interactive visual representation of the repository architecture.
 
@@ -111,7 +111,7 @@ Users can:
 
 ---
 
-## 4. 🛠️ Tech Stack Detection
+## 4. Tech Stack Detection
 
 RepoLens automatically identifies technologies used within the repository.
 
@@ -135,7 +135,7 @@ Important configuration files and project setup information.
 
 ---
 
-## 5. 📁 Repository Structure
+## 5. Repository Structure
 
 RepoLens analyzes the organization of the repository and presents its structure in an understandable format.
 
@@ -151,7 +151,7 @@ This helps users identify:
 
 ---
 
-## 6. ❤️ Project Health
+## 6. Project Health
 
 RepoLens provides project health observations based on information available from the analyzed repository.
 
@@ -159,7 +159,7 @@ This section helps users quickly identify characteristics of the project structu
 
 ---
 
-# 🏗️ How RepoLens Works
+# How RepoLens Works
 
 ```text
                     GitHub Repository URL
