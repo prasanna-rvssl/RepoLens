@@ -148,59 +148,134 @@ function FeatureIcon({ type }) {
    SIDEBAR
 ========================================================= */
 
-function Sidebar({ page, setPage, resetAnalysis }) {
+function Sidebar({
+  page,
+  setPage,
+  resetAnalysis,
+  mobileMenuOpen,
+  setMobileMenuOpen,
+}) {
+  function navigate(nextPage) {
+    setPage(nextPage);
+    setMobileMenuOpen(false);
+  }
+
+  function analyzeAnother() {
+    setMobileMenuOpen(false);
+    resetAnalysis();
+  }
+
   return (
-    <aside className="sidebar">
-      <RepoLensLogo />
+    <>
+      {/* Desktop Sidebar */}
+      <aside className="sidebar">
+        <RepoLensLogo />
 
-      <div className="sidebar-divider" />
+        <div className="sidebar-divider" />
 
-      <p className="sidebar-label">NAVIGATION</p>
+        <p className="sidebar-label">NAVIGATION</p>
 
-      <button
-        className={`nav-item ${page === "summary" ? "active" : ""}`}
-        onClick={() => setPage("summary")}
-      >
-        <span className="nav-icon">✦</span>
-        <span>Repository Analysis</span>
-      </button>
-
-      <button
-        className={`nav-item ${page === "repomap" ? "active" : ""}`}
-        onClick={() => setPage("repomap")}
-      >
-        <span className="nav-icon">⌘</span>
-        <span>RepoMap</span>
-      </button>
-
-      <button
-        className={`nav-item ${page === "stack" ? "active" : ""}`}
-        onClick={() => setPage("stack")}
-      >
-        <span className="nav-icon">◇</span>
-        <span>Tech Stack</span>
-      </button>
-
-      <button
-        className={`nav-item ${page === "health" ? "active" : ""}`}
-        onClick={() => setPage("health")}
-      >
-        <span className="nav-icon">♡</span>
-        <span>Project Health</span>
-      </button>
-
-      <div className="sidebar-bottom">
         <button
-          className="sidebar-bottom-item"
-          onClick={resetAnalysis}
+          className={`nav-item ${page === "summary" ? "active" : ""}`}
+          onClick={() => setPage("summary")}
         >
-          <span className="nav-icon">↻</span>
-          <span>Analyze Another</span>
+          <span className="nav-icon">✦</span>
+          <span>Repository Analysis</span>
         </button>
 
-        <div className="sidebar-version">v1.0</div>
+        <button
+          className={`nav-item ${page === "repomap" ? "active" : ""}`}
+          onClick={() => setPage("repomap")}
+        >
+          <span className="nav-icon">⌘</span>
+          <span>RepoMap</span>
+        </button>
+
+        <button
+          className={`nav-item ${page === "stack" ? "active" : ""}`}
+          onClick={() => setPage("stack")}
+        >
+          <span className="nav-icon">◇</span>
+          <span>Tech Stack</span>
+        </button>
+
+        <button
+          className={`nav-item ${page === "health" ? "active" : ""}`}
+          onClick={() => setPage("health")}
+        >
+          <span className="nav-icon">♡</span>
+          <span>Project Health</span>
+        </button>
+
+        <div className="sidebar-bottom">
+          <button
+            className="sidebar-bottom-item"
+            onClick={resetAnalysis}
+          >
+            <span className="nav-icon">↻</span>
+            <span>Analyze Another</span>
+          </button>
+
+          <div className="sidebar-version">v1.0</div>
+        </div>
+      </aside>
+
+      {/* Mobile Navigation */}
+      <div className="mobile-dashboard-nav">
+        <div className="mobile-topbar">
+          <RepoLensLogo />
+
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation"
+          >
+            {mobileMenuOpen ? "✕" : "☰"}
+          </button>
+        </div>
+
+        {mobileMenuOpen && (
+          <div className="mobile-nav-menu">
+            <button
+              className={page === "summary" ? "active" : ""}
+              onClick={() => navigate("summary")}
+            >
+              <span>✦</span>
+              Repository Analysis
+            </button>
+
+            <button
+              className={page === "repomap" ? "active" : ""}
+              onClick={() => navigate("repomap")}
+            >
+              <span>⌘</span>
+              RepoMap
+            </button>
+
+            <button
+              className={page === "stack" ? "active" : ""}
+              onClick={() => navigate("stack")}
+            >
+              <span>◇</span>
+              Tech Stack
+            </button>
+
+            <button
+              className={page === "health" ? "active" : ""}
+              onClick={() => navigate("health")}
+            >
+              <span>♡</span>
+              Project Health
+            </button>
+
+            <button onClick={analyzeAnother}>
+              <span>↻</span>
+              Analyze Another
+            </button>
+          </div>
+        )}
       </div>
-    </aside>
+    </>
   );
 }
 
@@ -973,7 +1048,7 @@ function RepoMap({ data }) {
               fitView
               fitViewOptions={{
                 padding: 0.16,
-                minZoom: 0.45,
+                minZoom: 0.2,
                 maxZoom: 1.25,
               }}
               nodesDraggable
@@ -1520,6 +1595,7 @@ function App() {
   const [data, setData] = useState(null);
   const [page, setPage] = useState("summary");
   const [loading, setLoading] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [error, setError] = useState("");
 
   async function analyzeRepository() {
@@ -1583,6 +1659,8 @@ function App() {
         page={page}
         setPage={setPage}
         resetAnalysis={resetAnalysis}
+        mobileMenuOpen={mobileMenuOpen}
+        setMobileMenuOpen={setMobileMenuOpen}
       />
 
       <main className="dashboard-main">
